@@ -14,6 +14,8 @@
 /Blend/obj/
 /Native/bin/
 /Native/obj/
+/Kernels/bin/
+/Kernels/obj/
 /Packages/PropertyChanged.Fody.3.4.0/
 /Packages/Fody.6.5.1/
 
@@ -31,6 +33,7 @@
 
 [Aa]ssets/StreamingAssets/mods/native/*.dll*
 [Aa]ssets/StreamingAssets/mods/native/*.xaml*
+[Aa]ssets/Managed/
 
 # Visual Studio cache directory
 .vs/

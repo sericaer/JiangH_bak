@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiangH-blend", "JiangH-blen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Native", "Native\Native.csproj", "{CF9ABEA5-6D32-4DFC-80ED-3595C30A76DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kernels", "Kernels\Kernels.csproj", "{98CAA525-FFD8-4714-A2DC-B2B9933F3D9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{CF9ABEA5-6D32-4DFC-80ED-3595C30A76DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF9ABEA5-6D32-4DFC-80ED-3595C30A76DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF9ABEA5-6D32-4DFC-80ED-3595C30A76DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98CAA525-FFD8-4714-A2DC-B2B9933F3D9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98CAA525-FFD8-4714-A2DC-B2B9933F3D9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98CAA525-FFD8-4714-A2DC-B2B9933F3D9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98CAA525-FFD8-4714-A2DC-B2B9933F3D9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
