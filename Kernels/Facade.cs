@@ -11,17 +11,24 @@ namespace JiangH.Kernels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public Person player { get; set; }
+        public IPerson player { get; set; }
 
-        public List<Person> persons;
+        public List<IPerson> persons;
 
         public Facade()
         {
-            persons = new List<Person>();
+            persons = new List<IPerson>();
             persons.Add(new Person("P0"));
             persons.Add(new Person("P1"));
 
             player = persons[0];
+
+            persons[0].businesses.Add(new Business("B0"));
+            persons[0].businesses.Add(new Business("B1"));
+
+            persons[1].businesses.Add(new Business("B2"));
+            persons[1].businesses.Add(new Business("B3"));
+            persons[1].businesses.Add(new Business("B4"));
         }
 
         public void ChangePlayer()
@@ -41,21 +48,8 @@ namespace JiangH.Kernels
         }
     }
 
-    public class Person : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public string name { get; set; }
-
-        public Person(string name)
-        {
-            this.name = name;
-        }
-    }
-
     public static class Log
     {
         public static Action<string> Info;
-
     }
 }

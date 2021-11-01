@@ -1,4 +1,5 @@
 using JiangH;
+using JiangH.Kernels;
 using Noesis;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,7 +13,6 @@ public class SceneMain : MonoBehaviour
     void Start()
     {
         JiangH.Kernels.Log.Info = Debug.Log;
-
         var view = GetComponent<NoesisView>();
         var rootView = view.Content as SceneRootView;
 

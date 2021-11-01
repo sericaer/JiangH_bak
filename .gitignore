@@ -16,11 +16,11 @@
 /Native/obj/
 /Kernels/bin/
 /Kernels/obj/
-/Packages/PropertyChanged.Fody.3.4.0/
-/Packages/Fody.6.5.1/
+/Packages/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
+!//Packages/*.json
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
