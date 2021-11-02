@@ -12,8 +12,8 @@
 /Release/
 /Blend/bin/
 /Blend/obj/
-/Native/bin/
-/Native/obj/
+/Native/Blend/bin/
+/Native/Blend/obj/
 /Kernels/bin/
 /Kernels/obj/
 /Packages/

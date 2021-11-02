@@ -5,7 +5,7 @@
              xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
              mc:Ignorable="d" 
              d:DesignHeight="768" d:DesignWidth="1366">
-    
+
     <Grid Background="#4C000000">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
             <ListView Name ="BusinessTab" ItemsSource="{Binding Path=businesses}" HorizontalAlignment="Center" Height="450" Margin="0" VerticalAlignment="Center" Width="750">

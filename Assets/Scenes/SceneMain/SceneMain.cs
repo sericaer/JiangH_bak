@@ -34,7 +34,6 @@ public class SceneMain : MonoBehaviour
 
         rootView.SetViewComponent(ui.GetXamlObj() as FrameworkElement);
 
-
     }
 
     // Update is called once per frame

@@ -6,6 +6,6 @@
   mc:Ignorable="d" 
   d:DesignHeight="768" d:DesignWidth="1366">
     <Grid Name="Container">
-        
+
     </Grid>
 </UserControl>
