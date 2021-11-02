@@ -1,6 +1,9 @@
-﻿using System;
+﻿using JiangH.Kernels.Mods;
+using JiangH.Kernels.Runs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,39 +14,87 @@ namespace JiangH.Kernels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public IPerson player { get; set; }
+        public static Func<string, object> InstanceXaml;
+        public static Func<string, object> FindXamlElement;
 
-        public List<IPerson> persons;
+        public static RunData runData { get; private set; }
 
-        public Facade()
+        private static ModManager modManager;
+
+        public static void LoadMods(string path)
         {
-            persons = new List<IPerson>();
-            persons.Add(new Person("P0"));
-            persons.Add(new Person("P1"));
-
-            player = persons[0];
-
-            persons[0].businesses.Add(new Business("B0"));
-            persons[0].businesses.Add(new Business("B1"));
-
-            persons[1].businesses.Add(new Business("B2"));
-            persons[1].businesses.Add(new Business("B3"));
-            persons[1].businesses.Add(new Business("B4"));
+            modManager = new ModManager(path);
         }
 
-        public void ChangePlayer()
+        public static void NewRunData()
         {
-            if(player == persons[1])
-            {
-                Log.Info("player changed to 0");
+            runData = new RunData();
+        }
 
-                player = persons[0];
+        public class UIElement : INotifyPropertyChanged
+        {
+            public event PropertyChangedEventHandler PropertyChanged;
+
+            private static Dictionary<UIElement, dynamic> dict = new Dictionary<UIElement, dynamic>();
+
+            public static UIElement InstanceUIElement(string name, object param = null)
+            {
+                var def = modManager.FindUIDef(name);
+
+                UIElement uiElement = null;
+                if(param != null)
+                {
+                    uiElement = Activator.CreateInstance(def.type, new Object[] { param }) as UIElement;
+                }
+                else
+                {
+                    uiElement = Activator.CreateInstance(def.type) as UIElement;
+                }
+
+                dynamic tabObj = Facade.InstanceXaml(def.xaml);
+                tabObj.DataContext = uiElement;
+
+                dict[uiElement] = tabObj;
+
+                return uiElement;
             }
-            else
-            {
-                Log.Info("player changed to 1");
 
-                player = persons[1];
+            public static void Destroy(UIElement ui)
+            {
+                dynamic xamlObj = dict[ui];
+                xamlObj.Parent.Children.Remove(xamlObj);
+
+                dict.Remove(ui);
+            }
+
+            //public UIElement FindUIElement(string name)
+            //{
+            //    var xamlObj = dict[this].FindName(name);
+
+            //    foreach (var dictElem in dict)
+            //    {
+            //        if (dictElem.Value == xamlObj)
+            //        {
+            //            return dictElem.Key;
+            //        }
+            //    }
+            //    return null;
+            //}
+
+            public void AddChild(UIElement uiElem, string parentLabel = null)
+            {
+                dynamic xamlContainer = this.GetXamlObj();
+
+                if (parentLabel != null)
+                {
+                    xamlContainer = this.GetXamlObj().FindName(parentLabel);
+                }
+                xamlContainer.Children.Add(dict[uiElem]);
+            }
+
+            public dynamic GetXamlObj()
+            {
+                return dict[this];
             }
         }
     }

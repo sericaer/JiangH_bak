@@ -7,16 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ReactiveMarbles.PropertyChanged;
+using System.IO;
 
 namespace mods.native
 {
-    public class SceneMain : INotifyPropertyChanged
+    public class SceneMain : Facade.UIElement
     {
         public static SceneMain inst;
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public Facade facade { get; set; }
 
         public IPerson player { get; private set; }
 
@@ -24,9 +23,7 @@ namespace mods.native
         {
             inst = this;
 
-            facade = new Facade();
-
-            facade.WhenChanged(x => x.player).Subscribe(p => this.player = p);
+            Facade.runData.WhenChanged(x => x.player).Subscribe(p => this.player = p);
         }
 
         public MyCommand ClickPlayerCommand
@@ -57,7 +54,7 @@ namespace mods.native
 
             public void Execute(object parameter)
             {
-                SceneMain.inst.facade.ChangePlayer();
+                Facade.runData.ChangePlayer();
             }
         }
 
@@ -72,8 +69,13 @@ namespace mods.native
 
             public void Execute(object parameter)
             {
-                Log.Info("Execute MyCommand2");
-                SceneMain.inst.player.AddBusiness();
+                var ui = InstanceUIElement("mods.native.BusinessTab", SceneMain.inst.player.businesses);
+
+                SceneMain.inst.AddChild(ui, "Container");
+
+                //dynamic container = Facade.FindXamlElement("Container");
+
+                //container.Children.Add(tabObj);
             }
         }
     }

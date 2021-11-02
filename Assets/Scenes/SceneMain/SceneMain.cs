@@ -9,23 +9,32 @@ using UnityEngine;
 
 public class SceneMain : MonoBehaviour
 {
+    public NoesisView view;
+
+    private SceneRootView rootView => view.Content as SceneRootView;
+
     // Start is called before the first frame update
     void Start()
     {
-        JiangH.Kernels.Log.Info = Debug.Log;
-        var view = GetComponent<NoesisView>();
-        var rootView = view.Content as SceneRootView;
+        Facade.FindXamlElement = (name) =>
+        {
+            return rootView.FindName(name);
+        };
 
-        var str = File.ReadAllText(Application.streamingAssetsPath + "/mods/native/SceneMain.xaml");
-        var viewComponent = XamlReader.Parse(str) as FrameworkElement;
+        Facade.InstanceXaml = (xaml) =>
+        {
+            var viewComponent = XamlReader.Parse(xaml) as FrameworkElement;
+            return viewComponent;
+        };
 
-        var asb = Assembly.Load( File.ReadAllBytes(Application.streamingAssetsPath + "/mods/native/Assembly.dll"));
-        var sceneType = asb.GetType("mods.native.SceneMain");
+        Facade.NewRunData();
 
-        var sceneObj = System.Activator.CreateInstance(sceneType);
-        viewComponent.DataContext = sceneObj;
 
-        rootView.SetViewComponent(viewComponent);
+        var ui = Facade.UIElement.InstanceUIElement("mods.native.SceneMain");
+
+        rootView.SetViewComponent(ui.GetXamlObj() as FrameworkElement);
+
+
     }
 
     // Update is called once per frame

@@ -6,12 +6,6 @@
   mc:Ignorable="d" 
   d:DesignHeight="768" d:DesignWidth="1366">
     <Grid Name="Container">
-        <!--<Button Content="Button" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="120" Height="150"/>-->
+        
     </Grid>
-    <!--<Border Background="DodgerBlue" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="50,20">
-    <StackPanel>
-      <TextBlock Text="Hello World" FontSize="30" Foreground="White"/>
-      <Button Content="Button" Margin="0,10,0,0"/>
-    </StackPanel>
-  </Border>-->
 </UserControl>

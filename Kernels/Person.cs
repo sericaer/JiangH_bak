@@ -27,8 +27,6 @@ namespace JiangH.Kernels
 
         public void AddBusiness()
         {
-            
-
             businesses.Add(new Business("BX"));
 
             Log.Info($"{name} AddBusiness {businesses.Count}");
