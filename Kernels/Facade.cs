@@ -41,6 +41,8 @@ namespace JiangH.Kernels
             {
                 var def = modManager.FindUIDef(name);
 
+                dynamic tabObj = Facade.InstanceXaml(def.xaml);
+
                 UIElement uiElement = null;
                 if(param != null)
                 {
@@ -51,7 +53,6 @@ namespace JiangH.Kernels
                     uiElement = Activator.CreateInstance(def.type) as UIElement;
                 }
 
-                dynamic tabObj = Facade.InstanceXaml(def.xaml);
                 tabObj.DataContext = uiElement;
 
                 dict[uiElement] = tabObj;

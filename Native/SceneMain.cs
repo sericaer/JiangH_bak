@@ -54,7 +54,9 @@ namespace mods.native
 
             public void Execute(object parameter)
             {
-                Facade.runData.ChangePlayer();
+                var ui = InstanceUIElement("mods.native.PersonDetail", SceneMain.inst.player);
+
+                SceneMain.inst.AddChild(ui, "Container");
             }
         }
 
