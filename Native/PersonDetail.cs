@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace mods.native
 {
@@ -15,6 +17,15 @@ namespace mods.native
         public PersonDetail(IPerson person)
         {
             this.person = person;
+        }
+
+        private void PrintText(object sender, SelectionChangedEventArgs args)
+        {
+            dynamic item = sender;
+            if (item != null)
+            {
+                Log.Info(item);
+            }
         }
     }
 }

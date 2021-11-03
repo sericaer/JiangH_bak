@@ -75,10 +75,6 @@ namespace mods.native
                 var ui = Facade.InstanceUIElement("mods.native.BusinessTab", SceneMain.inst.player.businesses);
 
                 SceneMain.inst.AddChild(ui, "Container");
-
-                //dynamic container = Facade.FindXamlElement("Container");
-
-                //container.Children.Add(tabObj);
             }
         }
     }

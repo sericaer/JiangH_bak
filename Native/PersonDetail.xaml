@@ -13,7 +13,13 @@
                     </TabItem>
                     <TabItem Header="Business">
                         <Grid>
-                            <ListView Name ="BusinessTab" ItemsSource="{Binding Path=person.businesses}" Margin="0" Background="#4C000000" HorizontalContentAlignment="Stretch">
+                            <!--<Grid.Resources>
+                            <Style x:Key="ItemStyle" TargetType="ListViewItem" BasedOn="{StaticResource {x:Type ListViewItem}}">
+                                    <Setter Property="Background"/>
+                                    --><!--<Setter Property="Background" Value="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource Self}, Converter={StaticResource RowBackgroundConverter}}"/>--><!--
+                            </Style>
+                            </Grid.Resources>-->
+                            <ListView SelectionChanged="PrintText" Name ="BusinessTab" ItemsSource="{Binding Path=person.businesses}" Margin="0" Background="#4C000000" HorizontalContentAlignment="Stretch">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Header="name" DisplayMemberBinding="{Binding name}" Width="160"/>
