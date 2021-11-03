@@ -6,21 +6,27 @@
              mc:Ignorable="d" 
              d:DesignHeight="768" d:DesignWidth="1366">
     <Grid Background="#4C000000">
-        <TabControl HorizontalAlignment="Center" Height="500" Margin="0" Width="800" VerticalAlignment="Center">
-            <TabItem Header="BaseInfo">
-            </TabItem>
-            <TabItem Header="Business">
-                <Grid>
-                    <ListView Name ="BusinessTab" ItemsSource="{Binding Path=person.businesses}" Margin="0" Background="#4C000000" HorizontalContentAlignment="Stretch">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="name" DisplayMemberBinding="{Binding name}" Width="160"/>
-                                <GridViewColumn Header="owner" DisplayMemberBinding="{Binding owner.name}"  Width="160"/>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                 </Grid>
-            </TabItem>
-        </TabControl>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid Background="#7F2C343A" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TabControl Margin="0" Width="800" Height="500" Background="#7F2C343A">
+                    <TabItem Header="BaseInfo">
+                    </TabItem>
+                    <TabItem Header="Business">
+                        <Grid>
+                            <ListView Name ="BusinessTab" ItemsSource="{Binding Path=person.businesses}" Margin="0" Background="#4C000000" HorizontalContentAlignment="Stretch">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="name" DisplayMemberBinding="{Binding name}" Width="160"/>
+                                        <GridViewColumn Header="owner" DisplayMemberBinding="{Binding owner.name}"  Width="160"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+            <Button Content="X" Width="30" Height="30" Command="{Binding CmdClose}" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="15"/>
+        </StackPanel>
+
     </Grid>
 </UserControl>
