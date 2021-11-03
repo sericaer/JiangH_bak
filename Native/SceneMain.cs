@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using ReactiveMarbles.PropertyChanged;
 using System.IO;
+using JiangH.Kernels.UI;
 
 namespace mods.native
 {
-    public class SceneMain : Facade.UIElement
+    public class SceneMain : UIElement
     {
         public static SceneMain inst;
 
@@ -54,7 +55,7 @@ namespace mods.native
 
             public void Execute(object parameter)
             {
-                var ui = InstanceUIElement("mods.native.PersonDetail", SceneMain.inst.player);
+                var ui = Facade.InstanceUIElement("mods.native.PersonDetail", SceneMain.inst.player);
 
                 SceneMain.inst.AddChild(ui, "Container");
             }
@@ -71,7 +72,7 @@ namespace mods.native
 
             public void Execute(object parameter)
             {
-                var ui = InstanceUIElement("mods.native.BusinessTab", SceneMain.inst.player.businesses);
+                var ui = Facade.InstanceUIElement("mods.native.BusinessTab", SceneMain.inst.player.businesses);
 
                 SceneMain.inst.AddChild(ui, "Container");
 

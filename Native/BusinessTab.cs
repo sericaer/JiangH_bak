@@ -1,4 +1,5 @@
 ﻿using JiangH.Kernels;
+using JiangH.Kernels.UI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,7 +10,7 @@ using System.Windows.Input;
 
 namespace mods.native
 {
-    class BusinessTab : Facade.UIElement
+    class BusinessTab : UIElement
     {
         public static BusinessTab inst;
 

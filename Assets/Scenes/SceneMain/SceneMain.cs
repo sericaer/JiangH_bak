@@ -30,7 +30,7 @@ public class SceneMain : MonoBehaviour
         Facade.NewRunData();
 
 
-        var ui = Facade.UIElement.InstanceUIElement("mods.native.SceneMain");
+        var ui = Facade.InstanceUIElement("mods.native.SceneMain");
 
         rootView.SetViewComponent(ui.GetXamlObj() as FrameworkElement);
 
