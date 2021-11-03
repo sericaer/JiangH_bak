@@ -13,9 +13,9 @@ namespace mods.native
     {
         public static BusinessTab inst;
 
-        public ObservableCollection<IBusiness> businesses { get; set; }
+        public ReadOnlyObservableCollection<IBusiness> businesses { get; set; }
 
-        public BusinessTab(ObservableCollection<IBusiness> businesses)
+        public BusinessTab(ReadOnlyObservableCollection<IBusiness> businesses)
         {
             inst = this;
 

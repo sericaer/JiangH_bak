@@ -7,9 +7,7 @@ namespace JiangH.Kernels
     {
         string name { get; }
 
-        ObservableCollection<IBusiness> businesses { get; }
-
-        void AddBusiness();
+        ReadOnlyObservableCollection<IBusiness> businesses { get; }
     }
 
     class Person : IPerson
@@ -17,25 +15,30 @@ namespace JiangH.Kernels
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string name { get; private set; }
-        public ObservableCollection<IBusiness> businesses { get; private set; }
+
+        public ReadOnlyObservableCollection<IBusiness> businesses { get; private set; }
+
+        private ObservableCollection<IBusiness> _businesses;
 
         public Person(string name)
         {
             this.name = name;
-            this.businesses = new ObservableCollection<IBusiness>();
+
+            _businesses = new ObservableCollection<IBusiness>();
+            businesses = new ReadOnlyObservableCollection<IBusiness>(_businesses);
         }
 
-        public void AddBusiness()
+        internal void AddBusiness(IBusiness business)
         {
-            businesses.Add(new Business("BX"));
-
-            Log.Info($"{name} AddBusiness {businesses.Count}");
+            _businesses.Add(business);
         }
     }
 
     public interface IBusiness : INotifyPropertyChanged
     {
         string name { get; }
+
+        IPerson owner { get; }
     }
 
     class Business : IBusiness
@@ -44,9 +47,16 @@ namespace JiangH.Kernels
 
         public string name { get; private set; }
 
+        public IPerson owner { get; private set; }
+
         public Business(string name)
         {
             this.name = name;
+        }
+
+        internal void SetOwner(IPerson person)
+        {
+            this.owner = person;
         }
     }
 }

@@ -8,10 +8,10 @@
 
     <Grid Background="#4C000000">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-            <ListView Name ="BusinessTab" ItemsSource="{Binding Path=businesses}" HorizontalAlignment="Center" Height="450" Margin="0" VerticalAlignment="Center" Width="750">
+            <ListView Name ="BusinessTab" ItemsSource="{Binding Path=businesses}" HorizontalAlignment="Center" Height="450" Margin="0" VerticalAlignment="Center" Width="750" Background="#4C000000">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Width="120" Header="name" DisplayMemberBinding="{Binding name}"/>
+                        <GridViewColumn Header="name" DisplayMemberBinding="{Binding name}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
