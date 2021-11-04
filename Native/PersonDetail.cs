@@ -14,6 +14,26 @@ namespace mods.native
     {
         public IPerson person { get; set; }
 
+        public IBusiness selectedBusiness
+        { 
+            get
+            {
+                return _selected;
+            }
+
+            set
+            {
+                _selected = value;
+                Log.Info($"Selected {value}");
+
+                var ui = Facade.InstanceUIElement("mods.native.BusinessDetail");
+
+                this.AddChild(ui, "Container");
+            }
+        }
+
+        IBusiness _selected;
+
         public PersonDetail(IPerson person)
         {
             this.person = person;
