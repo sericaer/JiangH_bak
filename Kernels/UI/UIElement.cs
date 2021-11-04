@@ -12,6 +12,7 @@ namespace JiangH.Kernels.UI
 
         internal static Dictionary<UIElement, dynamic> dict = new Dictionary<UIElement, dynamic>();
 
+  
         public static void Destroy(UIElement ui)
         {
             dynamic xamlObj = dict[ui];
@@ -49,5 +50,10 @@ namespace JiangH.Kernels.UI
         {
             return dict[this];
         }
+
+        //public virtual void OnInitialized()
+        //{
+
+        //}
     }
 }

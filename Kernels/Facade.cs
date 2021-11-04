@@ -51,6 +51,8 @@ namespace JiangH.Kernels
 
             UIElement.dict[uiElement] = tabObj;
 
+            //uiElement.OnInitialized?.Invoke();
+
             return uiElement;
         }
     }

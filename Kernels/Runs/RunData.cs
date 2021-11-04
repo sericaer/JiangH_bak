@@ -24,8 +24,6 @@ namespace JiangH.Kernels.Runs
 
         public RunData()
         {
-
-
             _persons = new List<Person>();
             _persons.Add(new Person("P0"));
             _persons.Add(new Person("P1"));

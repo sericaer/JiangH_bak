@@ -10,12 +10,20 @@ namespace JiangH.Kernels.Mods
 {
     class ModManager
     {
-        string path;
+        public static ModManager inst;
+
+
+        public InteactiveLogic inteactiveLogic;
+
+
+        private string path;
 
         private Dictionary<string, Mod> modDict;
 
         public ModManager(string path)
         {
+            inst = this;
+
             this.path = path;
 
             modDict = new Dictionary<string, Mod>();
@@ -24,6 +32,11 @@ namespace JiangH.Kernels.Mods
             {
                 modDict.Add(Path.GetFileName(sub), new Mod(sub));
             }
+
+            inteactiveLogic = new InteactiveLogic()
+            {
+                personInteractives = modDict.Values.SelectMany(x => x.inteactiveLogic.personInteractives)
+            };
         }
 
         internal UIDef FindUIDef(string name)
@@ -45,7 +58,9 @@ namespace JiangH.Kernels.Mods
 
     class Mod
     {
-        //private Dictionary<string, Type> dictType;
+
+        public InteactiveLogic inteactiveLogic;
+
         private Dictionary<string, UIDef> uiDefDict;
 
         private string path;
@@ -58,12 +73,18 @@ namespace JiangH.Kernels.Mods
         {
             this.path = path;
 
-            //dictType = new Dictionary<string, Type>();
-            uiDefDict = new Dictionary<string, UIDef>();
-
             assembly = Assembly.Load(File.ReadAllBytes(path + "/Assembly.dll"));
 
-            foreach(var xamlPath in Directory.EnumerateFiles(path, "*.xaml"))
+            uiDefDict = LoadUIDef(path);
+
+            inteactiveLogic = InteactiveLogic.Load(assembly);
+        }
+
+        private Dictionary<string, UIDef> LoadUIDef(string path)
+        {
+            var defDict = new Dictionary<string, UIDef>();
+
+            foreach (var xamlPath in Directory.EnumerateFiles(path, "*.xaml"))
             {
                 var content = File.ReadAllText(xamlPath);
 
@@ -71,8 +92,10 @@ namespace JiangH.Kernels.Mods
 
                 var type = assembly.GetType($"mods.{name}.{xamlName}");
 
-                uiDefDict.Add(xamlName, new UIDef(content, type));
+                defDict.Add(xamlName, new UIDef(content, type));
             }
+
+            return defDict;
         }
 
         internal UIDef GetUIDef(string name)

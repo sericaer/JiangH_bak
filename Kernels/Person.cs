@@ -1,4 +1,8 @@
-﻿using System.Collections.ObjectModel;
+﻿using JiangH.Kernels.Mods;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace JiangH.Kernels
@@ -8,6 +12,8 @@ namespace JiangH.Kernels
         string name { get; }
 
         ReadOnlyObservableCollection<IBusiness> businesses { get; }
+
+        IEnumerable<IPersonInterActive> interactives { get; }
     }
 
     class Person : IPerson
@@ -18,14 +24,27 @@ namespace JiangH.Kernels
 
         public ReadOnlyObservableCollection<IBusiness> businesses { get; private set; }
 
+        public IEnumerable<IPersonInterActive> interactives => _interactives;
+
         private ObservableCollection<IBusiness> _businesses;
+        private List<IPersonInterActive> _interactives;
 
         public Person(string name)
         {
             this.name = name;
 
             _businesses = new ObservableCollection<IBusiness>();
+            _interactives = new List<IPersonInterActive>();
+
             businesses = new ReadOnlyObservableCollection<IBusiness>(_businesses);
+
+            foreach (var interactiveType in  ModManager.inst.inteactiveLogic.personInteractives)
+            {
+                var interactive = Activator.CreateInstance(interactiveType) as IPersonInterActive;
+                interactive.person = this;
+
+                this._interactives.Add(interactive);
+            }
         }
 
         internal void AddBusiness(IBusiness business)

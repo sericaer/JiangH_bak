@@ -38,14 +38,5 @@ namespace mods.native
         {
             this.person = person;
         }
-
-        private void PrintText(object sender, SelectionChangedEventArgs args)
-        {
-            dynamic item = sender;
-            if (item != null)
-            {
-                Log.Info(item);
-            }
-        }
     }
 }
