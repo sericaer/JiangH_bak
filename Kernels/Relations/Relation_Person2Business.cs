@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace JiangH.Kernels.Relations
 {
-    class Relation_Person2Business
+    public class Relation_Person2Business
     {
         //public IObservable<(IPerson person, IBusiness bussiness)> OnAddOrUpdate => _OnAddOrUpdate;
 
@@ -34,14 +34,29 @@ namespace JiangH.Kernels.Relations
             all = new ObservableCollection<Element>();
             all.CollectionChanged += (object sender, NotifyCollectionChangedEventArgs e) =>
             {
-                foreach (var x in e.NewItems)
+                switch(e.Action)
                 {
-                    var elem = x as Element;
-                    //_OnAddOrUpdate.OnNext((elem.person, elem.business));
+                    case NotifyCollectionChangedAction.Add:
+                        foreach (var x in e.NewItems)
+                        {
+                            var elem = x as Element;
 
-                    elem.person.AddBusiness(elem.business);
-                    elem.business.SetOwner(elem.person);
+                            elem.person.AddBusiness(elem.business);
+                            elem.business.SetOwner(elem.person);
+                        }
+                        break;
+                    case NotifyCollectionChangedAction.Remove:
+                        foreach (var x in e.OldItems)
+                        {
+                            var elem = x as Element;
+
+                            elem.person.RemoveBusiness(elem.business);
+                            elem.business.SetOwner(null);
+                        }
+                        break;
                 }
+
+
 
                 //foreach (var y in e.)
                 //{
@@ -54,9 +69,15 @@ namespace JiangH.Kernels.Relations
             };
         }
 
-        public void AddOrUpdate(Person person, Business business)
+        public void Add(IPerson person, IBusiness business)
         {
-            all.Add(new Element(person, business));
+            all.Add(new Element(person as Person, business as Business));
+        }
+
+        public void Remove(IPerson person, IBusiness business)
+        {
+            var find = all.SingleOrDefault(x => x.person == person && x.business == business);
+            all.Remove(find);
         }
     }
 }

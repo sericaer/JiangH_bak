@@ -12,22 +12,34 @@ namespace mods.native
 {
     public class RevokeBussiness : IPersonInterActive
     {
-        public ReadOnlyObservableCollection<IBusiness> businesses { get; }
+        public ReadOnlyObservableCollection<IBusiness> businesses => person2.businesses;
 
         public override string detailUI => "mods.native.SelectBusinessItems";
 
+        public CommandOnRevoke cmdOnSelected => new CommandOnRevoke(this);
+
         public class CommandOnRevoke : ICommand
         {
+            private RevokeBussiness interactive;
+
             public event EventHandler CanExecuteChanged;
+
+            public CommandOnRevoke(RevokeBussiness interactive)
+            {
+                this.interactive = interactive;
+            }
 
             public bool CanExecute(object parameter)
             {
-                return true;
+                var business = parameter as IBusiness;
+                return business.name == "B1";
             }
 
             public void Execute(object parameter)
             {
                 Log.Info($"Revoke business {parameter}");
+
+                Facade.runData.person2Business.Remove(interactive.person2, parameter as IBusiness);
             }
         }
     }

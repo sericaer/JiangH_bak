@@ -2,19 +2,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:mods.native.interactive"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.Resources>
             <DataTemplate x:Key="ItemBusinessTemplate">
-                <RadioButton Content="{Binding name}" Style="{StaticResource {x:Type ToggleButton}}" Height="35" Width="300" GroupName="InterActiveGroup" Command="{Binding cmdTrigger}"/>
+                <RadioButton Content="{Binding name}" Style="{StaticResource {x:Type ToggleButton}}" Height="35" Width="300" GroupName="InterActiveGroup" Command="{Binding ElementName=BusinessContainer, Path = DataContext.cmdOnSelected}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}"/>
             </DataTemplate>
         </Grid.Resources>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Label Content="XXXXXXX" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
-            <ItemsControl Background="#4C000000" HorizontalAlignment="Center" VerticalAlignment="Center" Height="300" Padding="0" Margin="0,20,0,0" ItemTemplate="{StaticResource ItemBusinessTemplate}" Width="300">
-                <Button Content="--" Width="300"/>
+        <StackPanel Name="BusinessContainer" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Content="Revoke Business" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
+            <ItemsControl Background="#4C000000" HorizontalAlignment="Center" VerticalAlignment="Center" Height="300" Padding="0" Margin="0,20,0,0" ItemsSource="{Binding Path=businesses}" ItemTemplate="{StaticResource ItemBusinessTemplate}" Width="300">
             </ItemsControl>
         </StackPanel>
     </Grid>

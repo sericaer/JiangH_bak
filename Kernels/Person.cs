@@ -41,7 +41,7 @@ namespace JiangH.Kernels
             foreach (var interactiveType in  ModManager.inst.inteactiveLogic.personInteractives)
             {
                 var interactive = Activator.CreateInstance(interactiveType) as IPersonInterActive;
-                interactive.person = this;
+                interactive.person2 = this;
 
                 this._interactives.Add(interactive);
             }
@@ -50,6 +50,11 @@ namespace JiangH.Kernels
         internal void AddBusiness(IBusiness business)
         {
             _businesses.Add(business);
+        }
+
+        internal void RemoveBusiness(Business business)
+        {
+            _businesses.Remove(business);
         }
     }
 

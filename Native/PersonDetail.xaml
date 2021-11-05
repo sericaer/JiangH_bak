@@ -10,6 +10,9 @@
             <DataTemplate x:Key="ItemTemplate">
                 <RadioButton Content="{Binding name}" Style="{StaticResource {x:Type ToggleButton}}" Height="35" GroupName="InterActiveGroup" Command="{Binding cmdTrigger}" CommandParameter="{Binding ElementName=InterActiveDetail}"/>
             </DataTemplate>
+            <DataTemplate x:Key="ItemBusinessTemplate">
+                <RadioButton Content="{Binding name}" Style="{StaticResource {x:Type ToggleButton}}" Height="35" Width="300" GroupName="InterActiveGroup" Command="{Binding cmdTrigger}"/>
+            </DataTemplate>
         </Grid.Resources>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid Background="#7F2C343A" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -33,7 +36,11 @@
                             <ItemsControl Width="250" Background="#4C000000" ItemTemplate="{StaticResource ItemTemplate}" ItemsSource="{Binding Path=person.interactives}">
                             </ItemsControl>
                             <Grid  Name ="InterActiveDetail" Background="#4C000000" Width="521.5" Margin="3,0,0,0">
-    
+                                <!--<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Label Content="Revoke Business" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
+                                    <ItemsControl Background="#4C000000" HorizontalAlignment="Center" VerticalAlignment="Center" Height="300" Padding="0" Margin="0,20,0,0" ItemsSource="{Binding Path=person.businesses}" ItemTemplate="{StaticResource ItemBusinessTemplate}" Width="300">
+                                    </ItemsControl>
+                                </StackPanel>-->
                             </Grid>
                         </StackPanel>
                     </TabItem>

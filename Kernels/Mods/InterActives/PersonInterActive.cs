@@ -13,7 +13,7 @@ namespace JiangH.Kernels.Mods
 
         public virtual string detailUI { get; }
 
-        public IPerson person { get; set; }
+        public IPerson person2 { get; set; }
 
         public CommandTrigger cmdTrigger => new CommandTrigger(this);
 
@@ -43,7 +43,8 @@ namespace JiangH.Kernels.Mods
                 if (interactive.detailUI != null)
                 {
                     var def = ModManager.inst.FindUIDef(interactive.detailUI);
-                    var ui = Facade.InstanceXaml(def.xaml);
+                    dynamic ui = Facade.InstanceXaml(def.xaml);
+                    xamlObj.DataContext = interactive;
 
                     xamlObj.Children.Add(ui);
                 }

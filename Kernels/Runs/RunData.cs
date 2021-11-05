@@ -20,7 +20,7 @@ namespace JiangH.Kernels.Runs
         private List<Person> _persons;
         private List<Business> _businesses;
 
-        private Relation_Person2Business person2Business;
+        public Relation_Person2Business person2Business;
 
         public RunData()
         {
@@ -39,12 +39,12 @@ namespace JiangH.Kernels.Runs
 
             player = _persons[0];
 
-            person2Business.AddOrUpdate(_persons[0], _businesses[0]);
-            person2Business.AddOrUpdate(_persons[0], _businesses[1]);
+            person2Business.Add(_persons[0], _businesses[0]);
+            person2Business.Add(_persons[0], _businesses[1]);
 
-            person2Business.AddOrUpdate(_persons[1], _businesses[2]);
-            person2Business.AddOrUpdate(_persons[1], _businesses[3]);
-            person2Business.AddOrUpdate(_persons[1], _businesses[4]);
+            person2Business.Add(_persons[1], _businesses[2]);
+            person2Business.Add(_persons[1], _businesses[3]);
+            person2Business.Add(_persons[1], _businesses[4]);
         }
 
         public void ChangePlayer()
