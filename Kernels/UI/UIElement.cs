@@ -12,7 +12,8 @@ namespace JiangH.Kernels.UI
 
         internal static Dictionary<UIElement, dynamic> dict = new Dictionary<UIElement, dynamic>();
 
-  
+        internal static dynamic rootXamlObj;
+
         public static void Destroy(UIElement ui)
         {
             dynamic xamlObj = dict[ui];
@@ -20,20 +21,6 @@ namespace JiangH.Kernels.UI
 
             dict.Remove(ui);
         }
-
-        //public UIElement FindUIElement(string name)
-        //{
-        //    var xamlObj = dict[this].FindName(name);
-
-        //    foreach (var dictElem in dict)
-        //    {
-        //        if (dictElem.Value == xamlObj)
-        //        {
-        //            return dictElem.Key;
-        //        }
-        //    }
-        //    return null;
-        //}
 
         public void AddChild(UIElement uiElem, string parentLabel = null)
         {
@@ -46,14 +33,20 @@ namespace JiangH.Kernels.UI
             xamlContainer.Children.Add(dict[uiElem]);
         }
 
+        public void AddRootChild(UIElement uiElem)
+        {
+            Facade.rootXamlView.Children.Add(dict[uiElem]);
+        }
+
         public dynamic GetXamlObj()
         {
             return dict[this];
         }
 
-        //public virtual void OnInitialized()
-        //{
-
-        //}
+        protected void ReplaceSceneView(UIElement ui)
+        {
+            Facade.rootXamlView.Children.Clear();
+            Facade.rootXamlView.Children.Add(ui.GetXamlObj());
+        }
     }
 }

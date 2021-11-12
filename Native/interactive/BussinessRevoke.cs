@@ -16,7 +16,15 @@ namespace mods.native
 
         public override string detailUI => "mods.native.SelectBusinessItems";
 
-        public CommandOnRevoke cmdOnSelected => new CommandOnRevoke(this);
+        public CommandOnRevoke cmdOnSelected
+        {
+            get
+            {
+                return _MyCommand ?? (_MyCommand = new CommandOnRevoke(this));
+            }
+        }
+
+        private CommandOnRevoke _MyCommand;
 
         public class CommandOnRevoke : ICommand
         {
@@ -31,8 +39,9 @@ namespace mods.native
 
             public bool CanExecute(object parameter)
             {
-                var business = parameter as IBusiness;
-                return business.name == "B1";
+                //var business = parameter as IBusiness;
+                //return business.name == "B1";
+                return true;
             }
 
             public void Execute(object parameter)

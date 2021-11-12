@@ -3,6 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiangH-blend", "JiangH-blend.csproj", "{D646F8E5-8708-4D7A-83CF-995B5D59164A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{06E055C5-B480-4516-B3B9-7757D948BA60} = {06E055C5-B480-4516-B3B9-7757D948BA60}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kernels", "Kernels\Kernels.csproj", "{98CAA525-FFD8-4714-A2DC-B2B9933F3D9C}"
 EndProject

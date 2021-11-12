@@ -10,9 +10,6 @@
             <DataTemplate x:Key="ItemTemplate">
                 <RadioButton Content="{Binding name}" Style="{StaticResource {x:Type ToggleButton}}" Height="35" GroupName="InterActiveGroup" Command="{Binding cmdTrigger}" CommandParameter="{Binding ElementName=InterActiveDetail}"/>
             </DataTemplate>
-            <DataTemplate x:Key="ItemBusinessTemplate">
-                <RadioButton Content="{Binding name}" Style="{StaticResource {x:Type ToggleButton}}" Height="35" Width="300" GroupName="InterActiveGroup" Command="{Binding cmdTrigger}"/>
-            </DataTemplate>
         </Grid.Resources>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid Background="#7F2C343A" HorizontalAlignment="Center" VerticalAlignment="Center">

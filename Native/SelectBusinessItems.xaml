@@ -7,12 +7,12 @@
     <Grid>
         <Grid.Resources>
             <DataTemplate x:Key="ItemBusinessTemplate">
-                <RadioButton Content="{Binding name}" Style="{StaticResource {x:Type ToggleButton}}" Height="35" Width="300" GroupName="InterActiveGroup" Command="{Binding ElementName=BusinessContainer, Path = DataContext.cmdOnSelected}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=DataContext}"/>
+                <RadioButton Content="{Binding name}" Style="{StaticResource {x:Type ToggleButton}}" Height="35" Width="300" GroupName="InterActiveGroup" CommandParameter="{Binding DataContext, RelativeSource={RelativeSource Self}}" Command="{Binding ElementName=BusinessContainer, Path = DataContext.cmdOnSelected}" />
             </DataTemplate>
         </Grid.Resources>
         <StackPanel Name="BusinessContainer" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Label Content="Revoke Business" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
-            <ItemsControl Background="#4C000000" HorizontalAlignment="Center" VerticalAlignment="Center" Height="300" Padding="0" Margin="0,20,0,0" ItemsSource="{Binding Path=businesses}" ItemTemplate="{StaticResource ItemBusinessTemplate}" Width="300">
+            <ItemsControl Background="#4C000000" HorizontalAlignment="Center" VerticalAlignment="Center" Height="300" Padding="0" Margin="0,20,0,0" ItemsSource="{Binding Path=person2.businesses}" ItemTemplate="{StaticResource ItemBusinessTemplate}" Width="300">
             </ItemsControl>
         </StackPanel>
     </Grid>

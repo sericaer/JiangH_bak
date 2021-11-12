@@ -17,6 +17,8 @@ namespace JiangH.Kernels
         public static Func<string, object> InstanceXaml;
         public static Func<string, object> FindXamlElement;
 
+        public static dynamic rootXamlView { get; set; }
+
         public static RunData runData { get; private set; }
 
         internal static ModManager modManager;
@@ -59,6 +61,11 @@ namespace JiangH.Kernels
 
     public static class Log
     {
-        public static Action<string> Info;
+        public static Action<string> InfoFunc;
+
+        public static void Info(string str)
+        {
+            InfoFunc?.Invoke(str);
+        }
     }
 }

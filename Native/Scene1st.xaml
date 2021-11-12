@@ -1,0 +1,9 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Button Content="Start" Command="{Binding cmdStart}" HorizontalAlignment="Left" Height="38" Margin="243,191,0,0" VerticalAlignment="Top" Width="203"/>
+    </Grid>
+</UserControl>

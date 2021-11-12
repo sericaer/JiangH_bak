@@ -16,23 +16,23 @@ public class SceneMain : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Facade.FindXamlElement = (name) =>
-        {
-            return rootView.FindName(name);
-        };
+        //Facade.FindXamlElement = (name) =>
+        //{
+        //    return rootView.FindName(name);
+        //};
 
-        Facade.InstanceXaml = (xaml) =>
-        {
-            var viewComponent = XamlReader.Parse(xaml) as FrameworkElement;
-            return viewComponent;
-        };
+        //Facade.InstanceXaml = (xaml) =>
+        //{
+        //    var viewComponent = XamlReader.Parse(xaml) as FrameworkElement;
+        //    return viewComponent;
+        //};
 
-        Facade.NewRunData();
+        //Facade.NewRunData();
 
 
-        var ui = Facade.InstanceUIElement("mods.native.SceneMain");
+        //var ui = Facade.InstanceUIElement("mods.native.SceneMain");
 
-        rootView.SetViewComponent(ui.GetXamlObj() as FrameworkElement);
+        //rootView.SetViewComponent(ui.GetXamlObj() as FrameworkElement);
 
     }
 

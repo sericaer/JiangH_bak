@@ -43,7 +43,6 @@ namespace mods.native
             }
         }
 
-
         public class MyCommand : ICommand
         {
             public event EventHandler CanExecuteChanged;
@@ -57,7 +56,7 @@ namespace mods.native
             {
                 var ui = Facade.InstanceUIElement("mods.native.PersonDetail", SceneMain.inst.player);
 
-                SceneMain.inst.AddChild(ui, "Container");
+                SceneMain.inst.AddRootChild(ui);
             }
         }
 
@@ -74,7 +73,7 @@ namespace mods.native
             {
                 var ui = Facade.InstanceUIElement("mods.native.BusinessTab", SceneMain.inst.player.businesses);
 
-                SceneMain.inst.AddChild(ui, "Container");
+                SceneMain.inst.AddRootChild(ui);
             }
         }
     }
