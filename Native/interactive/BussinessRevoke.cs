@@ -39,9 +39,9 @@ namespace mods.native
 
             public bool CanExecute(object parameter)
             {
-                //var business = parameter as IBusiness;
-                //return business.name == "B1";
-                return true;
+                var business = parameter as IBusiness;
+                return business.name == "B1";
+                //return true;
             }
 
             public void Execute(object parameter)

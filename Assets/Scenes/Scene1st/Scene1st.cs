@@ -7,19 +7,19 @@ using UnityEngine.SceneManagement;
 public class Scene1st : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        JiangH.Kernels.Log.Info = Debug.Log;
+    //void Start()
+    //{
+    //    JiangH.Kernels.Log.Info = Debug.Log;
 
-        Facade.LoadMods(Application.streamingAssetsPath + "/mods/");
+    //    Facade.LoadMods(Application.streamingAssetsPath + "/mods/");
 
-        SceneManager.LoadScene("SceneMain");
-    }
+    //    SceneManager.LoadScene("SceneMain");
+    //}
 
-    // Update is called once per frame
-    void Update()
-    {
+    //// Update is called once per frame
+    //void Update()
+    //{
         
-    }
+    //}
 }
 

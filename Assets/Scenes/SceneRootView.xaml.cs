@@ -58,7 +58,7 @@ namespace JiangH
         {
             NoesisUnity.LoadComponent(this);
 
-            JiangH.Kernels.Log.Info = Debug.Log;
+            Kernels.Log.InfoFunc = Debug.Log;
 
             modPath = Application.streamingAssetsPath + "/mods/";
         }

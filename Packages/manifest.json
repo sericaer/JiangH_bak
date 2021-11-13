@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.noesis.noesisgui": "file:D:/temp/NoesisGUI-Unity-3.1.1-Indie",
+    "com.noesis.noesisgui": "file:NoesisGUI-Unity-3.1.1-Indie",
     "com.unity.2d.animation": "6.0.3",
     "com.unity.2d.pixel-perfect": "5.0.0",
     "com.unity.2d.psdimporter": "5.0.3",
